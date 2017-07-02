@@ -505,6 +505,7 @@ void resultScreen (){
 /*---------------MainFunc--------------------*/
 int main()
 {
+    SetConsoleOutputCP(437);
     playScreen();
     system("pause");
     return 0;
