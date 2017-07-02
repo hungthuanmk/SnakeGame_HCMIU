@@ -56,22 +56,20 @@
 
 using namespace std;
 
-char screen[H+1][W+1]={' '};
-int zone[H+1][W+1]={0};
+char screen[H+1][W+1] = {' '};
+int zone[H+1][W+1] = {0};
 
-int score=0, snakeX=(W/2), snakeY=(H/2), foodX=0, foodY=0, gameSpeed=50, timer=0;
-int numTails=2;
+int score = 0, snakeX = (W/2), snakeY = (H/2), foodX = 0, foodY = 0, gameSpeed = 50, timer = 0;
+int numTails = 2;
 
 vector <int> tailX, tailY;
 
-
-
-char direct='S';
-bool gameOver=false;
-bool gameStart=false;
+char direct ='S';
+bool gameOver = false;
+bool gameStart = false;
 /*---------------Header--------------------*/
 void foodSpawn();
-void infoBoard ();
+void infoBoard();
 
 /*---------------RootFunc------------------*/
 // This Function set cursor to (x,y)
@@ -318,6 +316,7 @@ void getKey()
         if (kbKey == 'W' || kbKey == 'w' || kbKey == KEY_UP)
             tempDir = 'U';
         //printf("%d",'a');
+     //   if (direct == 'S' && tempDir != 'L')
             gameStart = true;
     }
 
