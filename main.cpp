@@ -56,22 +56,20 @@
 
 using namespace std;
 
-char screen[H+1][W+1]={' '};
-int zone[H+1][W+1]={0};
+char screen[H+1][W+1] = {' '};
+int zone[H+1][W+1] = {0};
 
-int score=0, snakeX=(W/2), snakeY=(H/2), foodX=0, foodY=0, gameSpeed=50, timer=0;
-int numTails=2;
+int score = 0, snakeX = (W/2), snakeY = (H/2), foodX = 0, foodY = 0, gameSpeed = 50, timer = 0;
+int numTails = 2;
 
 vector <int> tailX, tailY;
 
-
-
-char direct='S';
-bool gameOver=false;
-bool gameStart=false;
+char direct ='S';
+bool gameOver = false;
+bool gameStart = false;
 /*---------------Header--------------------*/
 void foodSpawn();
-void infoBoard ();
+void infoBoard();
 
 /*---------------RootFunc------------------*/
 // This Function set cursor to (x,y)
@@ -306,33 +304,20 @@ void drawScreen(){
 void getKey()
 {
     char tempDir;
-
     if (_kbhit()) //Keyboard Hit
     {
-        switch (_getch())
-        {
-        case 'A':
-        case 'a':
-        case KEY_LEFT:
-            tempDir='L';
-            break;
-        case 'S':
-        case 's':
-        case KEY_DOWN:
-            tempDir='D';
-            break;
-        case 'D':
-        case 'd':
-        case KEY_RIGHT:
-            tempDir='R';
-            break;
-        case 'W':
-        case 'w':
-        case KEY_UP:
-            tempDir='U';
-            break;
-        }
-        gameStart=true;
+        int kbKey = _getch();
+        if (kbKey == 'A' || kbKey == 'a' || kbKey == KEY_LEFT)
+            tempDir = 'L';
+        if (kbKey == 'S' || kbKey == 's' || kbKey == KEY_DOWN)
+            tempDir = 'D';
+        if (kbKey == 'D' || kbKey == 'd' || kbKey == KEY_RIGHT)
+            tempDir = 'R';
+        if (kbKey == 'W' || kbKey == 'w' || kbKey == KEY_UP)
+            tempDir = 'U';
+        //printf("%d",'a');
+     //   if (direct == 'S' && tempDir != 'L')
+            gameStart = true;
     }
 
     if (
@@ -340,7 +325,6 @@ void getKey()
         (tempDir=='U' && direct!='D') ||
         (tempDir=='L' && direct!='R') ||
         (tempDir=='R' && direct!='L')
-
         )
             direct=tempDir;
 }
@@ -491,11 +475,9 @@ void mapSelect (){
 void playScreen ()
 {
     init();
-
     while (gameOver!=true)
         {
             draw();
-            ShowConsoleCursor(false);
         }
 }
 
@@ -506,6 +488,7 @@ void resultScreen (){
 int main()
 {
     SetConsoleOutputCP(437);
+    ShowConsoleCursor(false);
     playScreen();
     system("pause");
     return 0;
