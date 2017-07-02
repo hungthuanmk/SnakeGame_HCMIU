@@ -306,33 +306,19 @@ void drawScreen(){
 void getKey()
 {
     char tempDir;
-
     if (_kbhit()) //Keyboard Hit
     {
-        switch (_getch())
-        {
-        case 'A':
-        case 'a':
-        case KEY_LEFT:
-            tempDir='L';
-            break;
-        case 'S':
-        case 's':
-        case KEY_DOWN:
-            tempDir='D';
-            break;
-        case 'D':
-        case 'd':
-        case KEY_RIGHT:
-            tempDir='R';
-            break;
-        case 'W':
-        case 'w':
-        case KEY_UP:
-            tempDir='U';
-            break;
-        }
-        gameStart=true;
+        int kbKey = _getch();
+        if (kbKey == 'A' || kbKey == 'a' || kbKey == KEY_LEFT)
+            tempDir = 'L';
+        if (kbKey == 'S' || kbKey == 's' || kbKey == KEY_DOWN)
+            tempDir = 'D';
+        if (kbKey == 'D' || kbKey == 'd' || kbKey == KEY_RIGHT)
+            tempDir = 'R';
+        if (kbKey == 'W' || kbKey == 'w' || kbKey == KEY_UP)
+            tempDir = 'U';
+        //printf("%d",'a');
+            gameStart = true;
     }
 
     if (
@@ -340,7 +326,6 @@ void getKey()
         (tempDir=='U' && direct!='D') ||
         (tempDir=='L' && direct!='R') ||
         (tempDir=='R' && direct!='L')
-
         )
             direct=tempDir;
 }
@@ -491,11 +476,9 @@ void mapSelect (){
 void playScreen ()
 {
     init();
-
     while (gameOver!=true)
         {
             draw();
-            ShowConsoleCursor(false);
         }
 }
 
@@ -506,6 +489,7 @@ void resultScreen (){
 int main()
 {
     SetConsoleOutputCP(437);
+    ShowConsoleCursor(false);
     playScreen();
     system("pause");
     return 0;
