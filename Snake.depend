@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1498974589 source:d:\project\snake\main.cpp
+1499269492 source:d:\project\snake\main.cpp
 	<iostream>
 	<stdio.h>
 	<stdlib.h>

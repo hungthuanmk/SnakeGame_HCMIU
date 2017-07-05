@@ -22,10 +22,13 @@
     - No annoying cursor mess up
     - No long delay
     - Just 1.0 MB :)
+
 ******30/06/2017*******
 - IU Snake ver 0.02beta updated
     - Snake can go through safe border (no bug detected)
     - Score board added
+
+******02/07/2017*******
 
 */
 
@@ -52,6 +55,8 @@
 #define snakeHeadIcon 178
 #define snakeTailIcon 176
 
+#define ConsoleTitles "IU Snake 0.02b - By Xuan Tung and HTML *** Updated: 30/06/2017"
+
 #define MAX_TAIL (W-2)*(H-2)
 
 using namespace std;
@@ -60,11 +65,9 @@ char screen[H+1][W+1]={' '};
 int zone[H+1][W+1]={0};
 
 int score=0, snakeX=(W/2), snakeY=(H/2), foodX=0, foodY=0, gameSpeed=50, timer=0;
-int numTails=2;
+int numTails=1;
 
 vector <int> tailX, tailY;
-
-
 
 char direct='S';
 bool gameOver=false;
@@ -108,7 +111,7 @@ void ConsoleSetup ()
     SetConsoleCursorInfo(wHnd, &cursorInfo);*/
     // Change Title
 
-    SetConsoleTitle(TEXT("IU Snake 0.02b - By Xuan Tung and HTML *** Updated: 30/06/2017"));
+    SetConsoleTitle(TEXT(ConsoleTitles));
 
     // Resize setup
 
@@ -121,9 +124,13 @@ void ConsoleSetup ()
     // Resize buffer
     COORD bufferSize = {80, 50};
     SetConsoleScreenBufferSize(wHnd, bufferSize);
+
+    // Set default code page
+    SetConsoleOutputCP(487);
 }
 
 /*---------------InitFunc------------------*/
+// Make Danger border and zone
 void makeDangerBorder()
 {
     // Top
@@ -183,25 +190,25 @@ void makeSafeBorder()
 void safeBorderLogic()
 {
     // Left side
-    if (snakeX==W)
+    if (snakeX==W && zone[snakeY][snakeX]!=1)
     {
         screen[snakeY][snakeX]=char(179);
         snakeX=1;
     }
     // Right side
-    if (snakeX==0)
+    if (snakeX==0 && zone[snakeY][snakeX]!=1)
     {
         screen[snakeY][snakeX]=char(179);
         snakeX=W-1;
     }
     // Bot side
-    if (snakeY==H)
+    if (snakeY==H && zone[snakeY][snakeX]!=1)
     {
         screen[snakeY][snakeX]=char(196);
         snakeY=1;
     }
     // Top side
-    if (snakeY==0)
+    if (snakeY==0 && zone[snakeY][snakeX]!=1)
     {
         screen[snakeY][snakeX]=char(196);
         snakeY=H-1;
@@ -213,8 +220,7 @@ void safeBorderLogic()
 
 // 0 = safe
 // 1 = dangerous
-// 2 = food
-// 3 = bigFood
+
 
 // Setup process
 void init()
@@ -223,8 +229,8 @@ void init()
     ConsoleSetup();
 
 
-    //makeDangerBorder();
-    makeSafeBorder();
+    makeDangerBorder();
+    //makeSafeBorder();
     infoBoard();
 
 
@@ -269,7 +275,7 @@ void debug ()
     int Yline=16;
 
     gotoxy(70,Yline);
-    cout << "IU Snake ver 0.01beta";
+    cout << "IU Snake 0.03b";
     Yline++;
 
     gotoxy(70,Yline);
@@ -335,6 +341,8 @@ void getKey()
         gameStart=true;
     }
 
+
+
     if (
         (tempDir=='D' && direct!='U') ||
         (tempDir=='U' && direct!='D') ||
@@ -369,7 +377,7 @@ void snakeMove()
 void makeSnake()
 {
 
-    for (int i=0; i<numTails-1; i++) // Tail
+    for (int i=0; i<=numTails-1; i++) // Tail
     {
         screen[tailY[i]][tailX[i]]=char(snakeTailIcon);
         zone[tailY[i]][tailX[i]]=1;
@@ -460,7 +468,7 @@ void draw()
 
         Sleep(gameSpeed);
         infoBoard();
-        debug();
+        //debug();
 
     }
     else
@@ -506,6 +514,6 @@ void resultScreen (){
 int main()
 {
     playScreen();
-    system("pause");
+    getch();
     return 0;
 }
