@@ -95,8 +95,8 @@ void ShowConsoleCursor(bool showFlag)
 
 void ConsoleSetup ()
 {
-    HANDLE wHnd=GetStdHandle(STD_OUTPUT_HANDLE);    // Write on console
-    HANDLE rHnd=GetStdHandle(STD_INPUT_HANDLE);    // Read from console
+    HANDLE wHnd = GetStdHandle(STD_OUTPUT_HANDLE);    // Write on console
+    HANDLE rHnd = GetStdHandle(STD_INPUT_HANDLE);    // Read from console
     CONSOLE_CURSOR_INFO cursorInfo;
 
     // Remove Cursor
@@ -107,6 +107,8 @@ void ConsoleSetup ()
     // Change Title
 
     SetConsoleTitle(TEXT("IU Snake 0.02b - By Xuan Tung and HTML *** Updated: 30/06/2017"));
+
+    SetConsoleOutputCP(437);
 
     // Resize setup
 
@@ -127,87 +129,85 @@ void makeDangerBorder()
     // Top
     for (int x=0; x<W; x++)
     {
-        screen[0][x]=char(205);
-        zone[0][x]=1;
+        screen[0][x] = char(205);
+        zone[0][x] = 1;
     }
     // Left
     for (int y=0; y<H; y++)
     {
-        screen[y][0]=char(186);
-        zone[y][0]=1;
+        screen[y][0] = char(186);
+        zone[y][0] = 1;
     }
     // Bottom
     for (int x=0; x<W; x++)
     {
-        screen[H][x]=char(205);
-        zone[H][x]=1;
+        screen[H][x] = char(205);
+        zone[H][x] = 1;
     }
     // Right
     for (int y=0; y<H; y++)
     {
-        screen[y][W]=char(186);
-        zone[y][W]=1;
+        screen[y][W] = char(186);
+        zone[y][W] = 1;
     }
     // TopLeft
-    screen[0][0]=char(201); zone[0][0]=1;
+    screen[0][0] = char(201); zone[0][0]=1;
     // TopRight
-    screen[0][W]=char(187); zone[0][W]=1;
+    screen[0][W] = char(187); zone[0][W]=1;
     // BottomLeft
-    screen[H][0]=char(200); zone[H][0]=1;
+    screen[H][0] = char(200); zone[H][0]=1;
     // BottomRight
-    screen[H][W]=char(188); zone[H][W]=1;
+    screen[H][W] = char(188); zone[H][W]=1;
 }
 
 // Safezone Border
 void makeSafeBorder()
 {
     // Top
-    for (int x=0; x<W; x++) screen[0][x]=char(196);
+    for (int x=0; x<W; x++) screen[0][x] = char(196);
     // Left
-    for (int y=0; y<H; y++) screen[y][0]=char(179);
+    for (int y=0; y<H; y++) screen[y][0] = char(179);
     // Bottom
-    for (int x=0; x<W; x++) screen[H][x]=char(196);
+    for (int x=0; x<W; x++) screen[H][x] = char(196);
     // Right
-    for (int y=0; y<H; y++) screen[y][W]=char(179);
+    for (int y=0; y<H; y++) screen[y][W] = char(179);
     // TopLeft
-    screen[0][0]=char(218);
+    screen[0][0] = char(218);
     // TopRight
-    screen[0][W]=char(191);
+    screen[0][W] = char(191);
     // BottomLeft
-    screen[H][0]=char(192);
+    screen[H][0] = char(192);
     // BottomRight
-    screen[H][W]=char(217);
+    screen[H][W] = char(217);
 }
+
 void safeBorderLogic()
 {
     // Left side
-    if (snakeX==W)
+    if (snakeX == W)
     {
-        screen[snakeY][snakeX]=char(179);
-        snakeX=1;
+        screen[snakeY][snakeX] = char(179);
+        snakeX = 1;
     }
     // Right side
-    if (snakeX==0)
+    if (snakeX == 0)
     {
         screen[snakeY][snakeX]=char(179);
-        snakeX=W-1;
+        snakeX = W-1;
     }
     // Bot side
-    if (snakeY==H)
+    if (snakeY == H)
     {
-        screen[snakeY][snakeX]=char(196);
-        snakeY=1;
+        screen[snakeY][snakeX] = char(196);
+        snakeY = 1;
     }
     // Top side
-    if (snakeY==0)
+    if (snakeY == 0)
     {
-        screen[snakeY][snakeX]=char(196);
-        snakeY=H-1;
+        screen[snakeY][snakeX] = char(196);
+        snakeY = H-1;
     }
-
 }
-
-
 
 // 0 = safe
 // 1 = dangerous
@@ -217,9 +217,7 @@ void safeBorderLogic()
 // Setup process
 void init()
 {
-
     ConsoleSetup();
-
 
     //makeDangerBorder();
     makeSafeBorder();
@@ -291,14 +289,12 @@ void debug ()
     Yline++;
 }
 
-
 void drawScreen(){
     for (int i=0; i<=H; i++){
         gotoxy(scrX,scrY+i);
         for (int j=0; j<=W; j++) cout << screen[i][j];
     }
 }
-
 
 // getKey --> snakeMove
 void getKey()
@@ -355,22 +351,21 @@ void makeSnake()
 
     for (int i=0; i<numTails-1; i++) // Tail
     {
-        screen[tailY[i]][tailX[i]]=char(snakeTailIcon);
-        zone[tailY[i]][tailX[i]]=1;
+        screen[tailY[i]][tailX[i]] = char(snakeTailIcon);
+        zone[tailY[i]][tailX[i]] = 1;
     }
-    screen[snakeY][snakeX]=char(snakeHeadIcon); //Head
+    screen[snakeY][snakeX] = char(snakeHeadIcon); //Head
 
 
 }
 
 void deleteSnake()
 {
-    screen[snakeY][snakeX]=' ';
+    screen[snakeY][snakeX] = ' ';
 }
 // Food Spawn (Fail)
 void foodSpawn()
 {
-
     do
     {
         srand(time(NULL));
@@ -379,7 +374,7 @@ void foodSpawn()
     }
     while (zone[foodY][foodX]!=0 || (foodX==snakeX && foodY==snakeY) || (foodX==0) || (foodY==0));
 
-    screen[foodY][foodX]=char(foodIcon);
+    screen[foodY][foodX] = char(foodIcon);
 }
 // Tail
 
@@ -388,7 +383,6 @@ void saveTail ()
     tailX.insert(tailX.begin(),snakeX);
     tailY.insert(tailY.begin(),snakeY);
     //deleteTail
-
     while (tailX.size()>numTails || tailY.size()>numTails)
     {
         screen[tailY[tailY.size()-1]][tailX[tailX.size()-1]]=' ';
@@ -396,14 +390,11 @@ void saveTail ()
         tailX.pop_back();
         tailY.pop_back();
     }
-
-
 }
 
 // Game Logical
 void logic()
 {
-
     safeBorderLogic();
 
     if (snakeX==foodX && snakeY==foodY)
@@ -414,12 +405,12 @@ void logic()
         foodSpawn();
     }
 
-    if (zone[snakeY][snakeX]==1) gameOver=true;
+    if (zone[snakeY][snakeX]==1)
+        gameOver=true;
 }
 // This draw
 void draw()
 {
-
     getKey();
 
     if (gameStart)
@@ -434,18 +425,15 @@ void draw()
         drawScreen();
 
 
-
         deleteSnake();
 
         saveTail();
 
-        timer+=gameSpeed;
-
+        timer += gameSpeed;
 
         Sleep(gameSpeed);
         infoBoard();
         debug();
-
     }
     else
     {
@@ -469,7 +457,9 @@ void startScreen ()
 
 }
 
-void mapSelect (){
+void mapSelect ()
+{
+
 }
 
 void playScreen ()
@@ -481,14 +471,14 @@ void playScreen ()
         }
 }
 
-void resultScreen (){
+void resultScreen ()
+{
 }
 
 /*---------------MainFunc--------------------*/
 int main()
 {
-    SetConsoleOutputCP(437);
-    ShowConsoleCursor(false);
+
     playScreen();
     system("pause");
     return 0;
