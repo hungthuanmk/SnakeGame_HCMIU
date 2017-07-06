@@ -8,27 +8,26 @@
 #include <tchar.h>
 
 #define version "0.3beta"
-#define Debug false
-
-#define W 40   //Screen Width
-#define H 20   //Screen Height
-#define scrX 5    //Screen LeftTop X
-#define scrY 2    //Screen LeftTop Y
-
-#define KEY_UP 72
-#define KEY_DOWN 80
-#define KEY_LEFT 75
-#define KEY_RIGHT 77
-
-#define foodIcon 254
-#define snakeHeadIcon 178
-#define snakeTailIcon 176
-
-#define defaultColor 15
-#define snakeHeadColor 2
-#define snakeTailColor 14
-
+#define Debug   false
 #define ConsoleTitles "IU Snake - By Xuan Tung and HTML *** Updated: 06/07/2017"
+
+#define W       40   //Screen Width
+#define H       20   //Screen Height
+#define scrX    5    //Screen LeftTop X
+#define scrY    2    //Screen LeftTop Y
+
+#define KEY_UP      72
+#define KEY_DOWN    80
+#define KEY_LEFT    75
+#define KEY_RIGHT   77
+
+#define foodIcon        254
+#define snakeHeadIcon   178
+#define snakeTailIcon   176
+
+#define defaultColor     15
+#define snakeHeadColor   2
+#define snakeTailColor   14
 
 #define MAX_TAIL (W-2)*(H-2)
 
