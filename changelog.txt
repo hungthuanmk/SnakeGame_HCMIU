@@ -28,3 +28,4 @@
 ******06/07/2017*******
 - IU Snake ver 0.03beta updated
     - Fix lag when foodSpawn
+test
