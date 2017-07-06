@@ -80,6 +80,7 @@ White        |   15
 #define defaultColor 15
 #define snakeHeadColor 2
 #define snakeTailColor 14
+#define foodIcon 15
 
 
 #define ConsoleTitles "IU Snake 0.02b - By Xuan Tung and HTML *** Updated: 30/06/2017"
@@ -583,6 +584,8 @@ void playScreen ()
             draw();
             ShowConsoleCursor(false);
         }
+
+    gotoxy(0,23);
 }
 
 void resultScreen (){
