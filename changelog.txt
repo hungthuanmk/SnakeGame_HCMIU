@@ -1,0 +1,27 @@
+---------LOG-----------
+- First C/C++ class (26/06/2017), project game making: Caro, Sudoku, Snake
+--> Snake challenge accepted!
+-------BUILD LOG-------
+******26/06/2017*******
+- Research snake game making on internet
+- Build a wall around
+******27/06/2017*******
+- Build a snake head can move around and snake properties
+- Food spawning (a big bug)
+******28/06/2017*******
+- Big bug removed (still some)
+- Snake tail build (luckily! just some bug)
+******29/06/2017*******
+- IU Snake ver 0.01beta completed with ONE bug (go left on the start will kill snake :) )
+    Feature:
+    - A simple snake game
+    - Snake can move around map, eat food, die when touch wall or eat himself :)
+    - Snake move vertical fasterrrrr...
+    - Scoring system included
+    - No annoying cursor mess up
+    - No long delay
+    - Just 1.0 MB :)
+******30/06/2017*******
+- IU Snake ver 0.02beta updated
+    - Snake can go through safe border (no bug detected)
+    - Score board added
