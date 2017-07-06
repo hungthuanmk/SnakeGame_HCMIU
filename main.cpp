@@ -8,7 +8,7 @@
 #include <tchar.h>
 
 #define version "0.3beta"
-#define Debug true
+#define Debug false
 
 #define W 40   //Screen Width
 #define H 20   //Screen Height
@@ -20,20 +20,45 @@
 #define KEY_LEFT 75
 #define KEY_RIGHT 77
 
-#define foodIcon 111
+#define foodIcon 254
 #define snakeHeadIcon 178
 #define snakeTailIcon 176
 
-#define ConsoleTitles "IU Snake 0.02b - By Xuan Tung and HTML *** Updated: 06/07/2017"
+#define defaultColor 15
+#define snakeHeadColor 2
+#define snakeTailColor 14
+
+#define ConsoleTitles "IU Snake - By Xuan Tung and HTML *** Updated: 06/07/2017"
 
 #define MAX_TAIL (W-2)*(H-2)
+
+/*
+ +Name         | Value
+ +             |
+ +Black        |   0
+ +Blue         |   1
+ +Green        |   2
+ +Cyan         |   3
+ +Red          |   4
+ +Magenta      |   5
+ +Brown        |   6
+ +Light Gray   |   7
+ +Dark Gray    |   8
+ +Light Blue   |   9
+ +Light Green  |   10
+ +Light Cyan   |   11
+ +Light Red    |   12
+ +Light Magenta|   13
+ +Yellow       |   14
+ +White        |   15
+ +*/
 
 using namespace std;
 
 char screen[H+1][W+1] = {' '};
 int zone[H+1][W+1] = {0};
 
-int score = 0, snakeX = (W/2), snakeY = (H/2), foodX = 0, foodY = 0, gameSpeed = 50, timer = 0;
+int score = 0, snakeX = (W/2), snakeY = (H/2), foodX = 0, foodY = 0, gameSpeed = 40, timer = 0;
 int numTails = 1;
 
 vector <int> tailX, tailY;
@@ -67,11 +92,29 @@ void ShowConsoleCursor(bool showFlag)
     SetConsoleCursorInfo(wHnd, &cursorInfo);
 }
 
+void SetTextColor(int ForgC)
+{
+    WORD wColor;
+
+    HANDLE hStdOut = GetStdHandle(STD_OUTPUT_HANDLE);
+    CONSOLE_SCREEN_BUFFER_INFO csbi;
+                        //We use csbi for the wAttributes word.
+    if(GetConsoleScreenBufferInfo(hStdOut, &csbi))
+    {
+                    //Mask out all but the background attribute, and add in the forgournd color
+        wColor = (csbi.wAttributes & 0xF0) + (ForgC & 0x0F);
+        SetConsoleTextAttribute(hStdOut, wColor);
+    }
+}
+
 void ConsoleSetup ()
 {
     HANDLE wHnd = GetStdHandle(STD_OUTPUT_HANDLE);    // Write on console
     HANDLE rHnd = GetStdHandle(STD_INPUT_HANDLE);    // Read from console
     CONSOLE_CURSOR_INFO cursorInfo;
+
+    // Change init color
+    SetTextColor(defaultColor);
 
     // Remove Cursor
     ShowConsoleCursor(false);
@@ -99,6 +142,8 @@ void ConsoleSetup ()
     // Set default code page
     SetConsoleOutputCP(487);
 }
+
+
 
 /*---------------InitFunc------------------*/
 // Make Danger border and zone
@@ -195,8 +240,8 @@ void init()
 {
     ConsoleSetup();
 
-    makeDangerBorder();
-    //makeSafeBorder();
+    //makeDangerBorder();
+    makeSafeBorder();
     infoBoard();
 
 
@@ -266,9 +311,39 @@ void debug ()
 }
 
 void drawScreen(){
-    for (int i=0; i<=H; i++){
+    for (int i=0; i<=H; i++)
+    {
         gotoxy(scrX,scrY+i);
-        for (int j=0; j<=W; j++) cout << screen[i][j];
+        for (int j=0; j<=W; j++)
+         {
+            switch (screen[i][j])
+            {
+                case char(snakeHeadIcon):
+                {
+                    SetTextColor(snakeHeadColor);
+                    cout << screen[i][j];
+                    SetTextColor(defaultColor);
+                    break;
+                }
+                case char(snakeTailIcon):
+                {
+                    SetTextColor(snakeTailColor);
+                    cout << screen[i][j];
+                    SetTextColor(defaultColor);
+                    break;
+                }
+                case char(foodIcon):
+                {
+                    SetTextColor(12);
+                    cout << screen[i][j];
+                    SetTextColor(defaultColor);
+                    break;
+                }
+                default:
+                cout << screen[i][j];
+            }
+
+        }
     }
 }
 
@@ -331,8 +406,6 @@ void makeSnake()
         zone[tailY[i]][tailX[i]] = 1;
     }
     screen[snakeY][snakeX] = char(snakeHeadIcon); //Head
-
-
 }
 
 void deleteSnake()
@@ -344,9 +417,9 @@ void foodSpawn()
 {
     do
     {
-        srand(time(NULL));
-        foodX=rand()%W;
-        foodY=rand()%H;
+        srand(foodX + foodY);
+        foodX = rand()%W;
+        foodY = rand()%H;
     }
     while (zone[foodY][foodX]!=0 || (foodX==snakeX && foodY==snakeY) || (foodX==0) || (foodY==0));
 

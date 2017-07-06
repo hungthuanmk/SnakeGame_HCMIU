@@ -25,3 +25,6 @@
 - IU Snake ver 0.02beta updated
     - Snake can go through safe border (no bug detected)
     - Score board added
+******06/07/2017*******
+- IU Snake ver 0.03beta updated
+    - Fix lag when foodSpawn
