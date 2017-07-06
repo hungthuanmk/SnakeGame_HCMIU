@@ -8,4 +8,4 @@ What a famous game! Why dont we build the own one?
   + xuantung.1998@gmail.com
 #
 Computer Science & Engineering
-International University - Vietnam National University - Ho Chi Minh City.
+> International University - Vietnam National University - Ho Chi Minh City.
