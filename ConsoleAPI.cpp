@@ -76,7 +76,7 @@ void ConsoleSetup ()
     SetConsoleWindowInfo(wHnd, TRUE, &windowSize);
 
     // Resize buffer
-    COORD bufferSize = {80, 50};
+    COORD bufferSize = {73, 25};
     SetConsoleScreenBufferSize(wHnd, bufferSize);
 
     // Set default code page
