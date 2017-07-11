@@ -19,3 +19,43 @@
 	<vector>
 	<tchar.h>
 
+1499793069 source:d:\project\snakegame_hcmiu\consoleapi.cpp
+	"ConsoleAPI.h"
+	"Declaration.h"
+	<windows.h>
+
+1499786896 d:\project\snakegame_hcmiu\consoleapi.h
+
+1499793244 source:d:\project\snakegame_hcmiu\main.cpp
+	<iostream>
+	<conio.h>
+	"Screens.h"
+
+1499782471 d:\project\snakegame_hcmiu\screens.h
+
+1499782779 d:\project\snakegame_hcmiu\constants.h
+
+1499792454 source:d:\project\snakegame_hcmiu\screens.cpp
+	"Screens.h"
+	"GamePlay.h"
+
+1499792320 d:\project\snakegame_hcmiu\declaration.h
+	<string>
+
+1499788504 d:\project\snakegame_hcmiu\variables.h
+
+1499793099 source:d:\project\snakegame_hcmiu\gameplay.cpp
+	"Declaration.h"
+	"ConsoleAPI.h"
+	"GamePlay.h"
+	<iostream>
+	<conio.h>
+	<stdlib.h>
+	<windows.h>
+	<vector>
+
+1499786203 d:\project\snakegame_hcmiu\gameplay.h
+
+1499791553 source:d:\project\snakegame_hcmiu\declaration.cpp
+	"Declaration.h"
+
