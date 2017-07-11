@@ -34,7 +34,6 @@
 		</Compiler>
 		<Unit filename="ConsoleAPI.cpp" />
 		<Unit filename="ConsoleAPI.h" />
-		<Unit filename="Declaration.cpp" />
 		<Unit filename="Declaration.h" />
 		<Unit filename="GamePlay.cpp" />
 		<Unit filename="GamePlay.h" />
