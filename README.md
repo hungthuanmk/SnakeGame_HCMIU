@@ -1,8 +1,8 @@
 # SnakeGame_HCMIU
 What a famous game! Why dont we build the own one?
-# Evironment
+# Environment
   + IDE: CodeBlocks 16.01
-  + OS: Windows 10
+  + OS: Windows 10 x64
   + Language: English
 # Authors
   + Nguyen Thanh Xuan Tung (https://www.facebook.com/ntxt98)
