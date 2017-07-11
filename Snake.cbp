@@ -32,6 +32,16 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="ConsoleAPI.cpp" />
+		<Unit filename="ConsoleAPI.h" />
+		<Unit filename="Constants.h" />
+		<Unit filename="Declaration.cpp" />
+		<Unit filename="Declaration.h" />
+		<Unit filename="GamePlay.cpp" />
+		<Unit filename="GamePlay.h" />
+		<Unit filename="Screens.cpp" />
+		<Unit filename="Screens.h" />
+		<Unit filename="Variables.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />
