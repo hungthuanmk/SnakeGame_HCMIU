@@ -6,6 +6,6 @@ What a famous game! Why dont we build the own one?
 # Email
   + hungthuanmk@gmail.com
   + xuantung.1998@gmail.com
-#
-Computer Science & Engineering
+# Info
+School of Computer Science & Engineering
 > International University - Vietnam National University - Ho Chi Minh City.
