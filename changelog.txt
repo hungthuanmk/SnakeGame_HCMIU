@@ -28,3 +28,6 @@
 ******06/07/2017*******
 - IU Snake ver 0.03beta updated
     - Fix lag when foodSpawn
+******12/07/2017*******
+- IU Snake ver 0.04 updated
+    - Divide into diff header and source files
