@@ -21,6 +21,6 @@ void aboutScreen();
 
 void resultScreen();
 
-
+void selectMenu();
 
 #endif // SCREENS_H_INCLUDED

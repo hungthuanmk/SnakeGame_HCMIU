@@ -9,7 +9,8 @@ char version[] = "0.4";
 
 int main()
 {
-    playScreen();
+    mainMenu();
     getch();
+    playScreen();
     return 0;
 }

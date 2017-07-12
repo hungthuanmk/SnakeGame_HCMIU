@@ -249,20 +249,45 @@ void drawScreen()
 // getKey --> snakeMove
 void getKey()
 {
-    char tempDir;
+    char tempDir = ' ';
     if (_kbhit()) //Keyboard Hit
     {
         int kbKey = _getch();
-        if (kbKey == 'A' || kbKey == 'a' || kbKey == KEY_LEFT)
+        if (kbKey == 'A' || kbKey == 'a')
             tempDir = 'L';
-        if (kbKey == 'S' || kbKey == 's' || kbKey == KEY_DOWN)
+        else
+        if (kbKey == 'S' || kbKey == 's')
             tempDir = 'D';
-        if (kbKey == 'D' || kbKey == 'd' || kbKey == KEY_RIGHT)
+        else
+        if (kbKey == 'D' || kbKey == 'd')
             tempDir = 'R';
-        if (kbKey == 'W' || kbKey == 'w' || kbKey == KEY_UP)
+        else
+        if (kbKey == 'W' || kbKey == 'w')
             tempDir = 'U';
-        //printf("%d",'a');
-     //   if (direct == 'S' && tempDir != 'L')
+        else
+        if (kbKey == 0 || kbKey == 224)
+        {
+            char tempKB = _getch();
+            switch (tempKB)
+            {
+                case KEY_LEFT:
+                    tempDir = 'L';
+                    break;
+                case KEY_DOWN:
+                    tempDir = 'D';
+                    break;
+                case KEY_RIGHT:
+                    tempDir = 'R';
+                    break;
+                case KEY_UP:
+                    tempDir = 'U';
+                    break;
+            }
+
+        }
+        //   printf("%d",'a');
+        //   if (direct == 'S' && tempDir != 'L')
+        if (tempDir != ' ')
             gameStart = true;
     }
 
