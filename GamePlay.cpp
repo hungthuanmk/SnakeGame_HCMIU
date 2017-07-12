@@ -144,8 +144,8 @@ void init()
     makeSafeBorder();
     infoBoard();
 
-    tailX.insert(tailX.begin(),snakeX-2);
-    tailY.insert(tailY.begin(),snakeY);
+   // tailX.insert(tailX.begin(),snakeX-2);
+   // tailY.insert(tailY.begin(),snakeY);
 
     tailX.insert(tailX.begin(),snakeX-1);
     tailY.insert(tailY.begin(),snakeY);
@@ -246,7 +246,7 @@ void drawScreen()
     }
 }
 
-// getKey --> snakeMove
+
 void getKey()
 {
     char tempDir = ' ';
@@ -287,8 +287,12 @@ void getKey()
         }
         //   printf("%d",'a');
         //   if (direct == 'S' && tempDir != 'L')
-        if (tempDir != ' ')
+        if (tempDir != ' ' && gameStart == false)
+        {
             gameStart = true;
+            deleteSnake();
+        }
+
     }
 
     if (
