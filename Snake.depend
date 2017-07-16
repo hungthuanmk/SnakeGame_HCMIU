@@ -63,3 +63,42 @@
 1499791553 source:d:\project\snakegame_hcmiu\declaration.cpp
 	"Declaration.h"
 
+1500183648 source:d:\github\bla\snakegame_hcmiu\gameplay.cpp
+	"Declaration.h"
+	"ConsoleAPI.h"
+	"GamePlay.h"
+	<iostream>
+	<conio.h>
+	<stdlib.h>
+	<windows.h>
+	<vector>
+
+1500180630 d:\github\bla\snakegame_hcmiu\declaration.h
+	<string>
+
+1500183042 d:\github\bla\snakegame_hcmiu\consoleapi.h
+
+1500180630 d:\github\bla\snakegame_hcmiu\gameplay.h
+
+1500180630 source:d:\github\bla\snakegame_hcmiu\screens.cpp
+	"Declaration.h"
+	"GamePlay.h"
+	"ConsoleAPI.h"
+	"Screens.h"
+	<iostream>
+	<conio.h>
+
+1500180630 d:\github\bla\snakegame_hcmiu\screens.h
+
+1500182215 source:d:\github\bla\snakegame_hcmiu\main.cpp
+	<iostream>
+	<conio.h>
+	"Screens.h"
+	<windows.h>
+
+1500183583 source:d:\github\bla\snakegame_hcmiu\consoleapi.cpp
+	"ConsoleAPI.h"
+	"Declaration.h"
+	<cwchar>
+	<windows.h>
+
