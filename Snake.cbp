@@ -37,6 +37,8 @@
 		<Unit filename="Declaration.h" />
 		<Unit filename="GamePlay.cpp" />
 		<Unit filename="GamePlay.h" />
+		<Unit filename="Maps.cpp" />
+		<Unit filename="Maps.h" />
 		<Unit filename="Screens.cpp" />
 		<Unit filename="Screens.h" />
 		<Unit filename="main.cpp" />
