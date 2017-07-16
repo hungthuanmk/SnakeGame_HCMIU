@@ -10,6 +10,7 @@
 #define KEY_DOWN    80
 #define KEY_LEFT    75
 #define KEY_RIGHT   77
+#define KEY_ENTER   13
 
 #define foodIcon        254
 #define snakeHeadIcon   178
