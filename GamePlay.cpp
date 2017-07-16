@@ -20,9 +20,9 @@ using namespace std;
 
 extern char version[];
 
-const int W = 40;   //Screen Width
+const int W = 30;   //Screen Width
 const int H = 20;   //Screen Height
-const int scrX = 5;    //Screen LeftTop X
+const int scrX = 3;    //Screen LeftTop X
 const int scrY = 2;    //Screen LeftTop Y
 
 // VARIABLES

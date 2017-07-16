@@ -6,9 +6,29 @@
     #include "Declaration.h"
 #endif // DECLARATION_H_INCLUDED
 
+#include <cwchar>
 #include <windows.h>
 
 using namespace std;
+
+typedef struct _CONSOLE_FONT_INFOEX
+{
+    ULONG cbSize;
+    DWORD nFont;
+    COORD dwFontSize;
+    UINT  FontFamily;
+    UINT  FontWeight;
+    WCHAR FaceName[LF_FACESIZE];
+}  CONSOLE_FONT_INFOEX, *PCONSOLE_FONT_INFOEX;
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+BOOL WINAPI SetCurrentConsoleFontEx(HANDLE hConsoleOutput, BOOL bMaximumWindow, PCONSOLE_FONT_INFOEX
+lpConsoleCurrentFontEx);
+#ifdef __cplusplus
+}
+#endif
 
 extern char ConsoleTitle[];
 
@@ -47,6 +67,19 @@ void SetTextColor(int ForgC)
     }
 }
 
+void setFont()
+{
+    CONSOLE_FONT_INFOEX cfi;
+    cfi.cbSize = sizeof(cfi);
+    cfi.nFont = 0;
+    cfi.dwFontSize.X = 20;                   // Width of each character in the font
+    cfi.dwFontSize.Y = 20;                  // Height
+    cfi.FontFamily = FF_DONTCARE;
+    cfi.FontWeight = FW_NORMAL;
+    std::wcscpy(cfi.FaceName, L"Consolas"); // Choose your font
+    SetCurrentConsoleFontEx(GetStdHandle(STD_OUTPUT_HANDLE), FALSE, &cfi);
+}
+
 void ConsoleSetup ()
 {
     HANDLE wHnd = GetStdHandle(STD_OUTPUT_HANDLE);    // Write on console
@@ -76,9 +109,13 @@ void ConsoleSetup ()
     SetConsoleWindowInfo(wHnd, TRUE, &windowSize);
 
     // Resize buffer
-    COORD bufferSize = {73, 25};
+    COORD bufferSize = {50, 25};
     SetConsoleScreenBufferSize(wHnd, bufferSize);
 
     // Set default code page
     SetConsoleOutputCP(487);
+
+    // Change font and font size
+    setFont();
+
 }
