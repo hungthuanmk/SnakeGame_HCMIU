@@ -22,6 +22,12 @@
 
 #define MAX_TAIL (W-2)*(H-2)
 
+const int W = 55;   //Screen Width
+const int H = 20;   //Screen Height
+
+const int scrX = 3;    //Screen LeftTop X
+const int scrY = 2;    //Screen LeftTop Y
+
 /*
  +Name         | Value
  +             |
