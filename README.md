@@ -1,7 +1,5 @@
 # SnakeGame_HCMIU
 What a famous game! Why dont we build the own one?
-# CAUTION
->>> The project is being developed.
 # Environment
   + IDE: CodeBlocks 16.01
   + OS: Windows 10 x64
