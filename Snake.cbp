@@ -32,9 +32,6 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
-		<Linker>
-			<Add library="winmm" />
-		</Linker>
 		<Unit filename="ConsoleAPI.cpp" />
 		<Unit filename="ConsoleAPI.h" />
 		<Unit filename="Declaration.h" />

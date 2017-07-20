@@ -1,21 +1,15 @@
 #ifndef DECLARATION_H_INCLUDED
     #include "Declaration.h"
 #endif // DECLARATION_H_INCLUDED
-
 #ifndef GAMEPLAY_H_INCLUDED
     #include "GamePlay.h"
 #endif // GAMEPLAY_H_INCLUDED
-
 #ifndef CONSOLEAPI_H_INCLUDED
     #include "ConsoleAPI.h"
 #endif // CONSOLEAPI_H_INCLUDED
-
 #include "Screens.h"
 #include <iostream>
 #include <conio.h>
-
-#include <windows.h>
-
 
 using namespace std;
 
@@ -23,66 +17,24 @@ extern bool gameOver;
 
 void mainMenu()
 {
-
-
     ConsoleSetup();
-    makeSafeBorder();
-    drawScreen();
-
-    int line=1, space=3;
-    goToXY(scrX+space,scrY+(line++));
-    cout << "  ______                       __                 ";
-
-    goToXY(scrX+space,scrY+(line++));
-    cout << " /      \\                     |  \\                ";
-
-    goToXY(scrX+space,scrY+(line++));
-    cout << "|  $$$$$$\\ _______    ______  | $$   __   ______  ";
-
-    goToXY(scrX+space,scrY+(line++));
-    cout << "| $$___\\$$|       \\  |      \\ | $$  /  \\ /      \\ ";
-
-    goToXY(scrX+space,scrY+(line++));
-    cout << " \\$$    \\ | $$$$$$$\\  \\$$$$$$\\| $$_/  $$|  $$$$$$\\";
-
-    goToXY(scrX+space,scrY+(line++));
-    cout << " _\\$$$$$$\\| $$  | $$ /      $$| $$   $$ | $$    $$";
-
-    goToXY(scrX+space,scrY+(line++));
-    cout << "|  \\__| $$| $$  | $$|  $$$$$$$| $$$$$$\\ | $$$$$$$$";
-
-    goToXY(scrX+space,scrY+(line++));
-    cout << " \\$$    $$| $$  | $$ \\$$    $$| $$  \\$$\\ \\$$     \\";
-
-    goToXY(scrX+space,scrY+(line++));
+    cout << "  ______                       __                 \n";
+    cout << " /      \\                     |  \\                \n";
+    cout << "|  $$$$$$\\ _______    ______  | $$   __   ______  \n";
+    cout << "| $$___\\$$|       \\  |      \\ | $$  /  \\ /      \\ \n";
+    cout << " \\$$    \\ | $$$$$$$\\  \\$$$$$$\\| $$_/  $$|  $$$$$$\\\n";
+    cout << " _\\$$$$$$\\| $$  | $$ /      $$| $$   $$ | $$    $$\n";
+    cout << "|  \\__| $$| $$  | $$|  $$$$$$$| $$$$$$\\ | $$$$$$$$\n";
+    cout << " \\$$    $$| $$  | $$ \\$$    $$| $$  \\$$\\ \\$$     \\\n";
     cout << "  \\$$$$$$  \\$$   \\$$  \\$$$$$$$ \\$$   \\$$  \\$$$$$$$";
-
-    goToXY(scrX+space,scrY+(line++));
-    cout << "";
-
-    goToXY(scrX+space,scrY+(line++));
-    cout << "";
-
-    goToXY(scrX+space,scrY+(line++));
-    cout << "";
-
-    goToXY(scrX+space,scrY+(line++));
-    cout << "                   START NEW GAME";
-
-    goToXY(scrX+space,scrY+(line++));
-    cout << "                     MAP SELECT";
-
-    goToXY(scrX+space,scrY+(line++));
-    cout << "                       ABOUT";
-
-    goToXY(scrX+space,scrY+(line++));
-    cout << "                     QUIT GAME :(";
-
-
-
-
-    //selectMenu();
-
+    cout << "\n";
+    cout << "\n";
+    cout << "\n";
+    cout << "                   START NEW GAME\n";
+    cout << "                     MAP SELECT\n";
+    cout << "                       ABOUT\n";
+    cout << "                     QUIT GAME :(\n";
+    selectMenu();
 }
 
 void playScreen ()
