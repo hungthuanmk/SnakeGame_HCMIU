@@ -9,6 +9,7 @@
 #include <cwchar>
 #include <windows.h>
 
+
 using namespace std;
 
 typedef struct _CONSOLE_FONT_INFOEX
@@ -102,15 +103,15 @@ void ConsoleSetup ()
 
     // Resize setup
 
-    SMALL_RECT windowSize = {0, 0, 80, 50};
+    // SMALL_RECT windowSize = {0, 0, 80, 50};
 
     // Resize screen
 
-    SetConsoleWindowInfo(wHnd, TRUE, &windowSize);
+    // SetConsoleWindowInfo(wHnd, TRUE, &windowSize);
 
     // Resize buffer
-    COORD bufferSize = {50, 25};
-    SetConsoleScreenBufferSize(wHnd, bufferSize);
+    COORD bufferSize = {30, 20};
+    //SetConsoleScreenBufferSize(wHnd, bufferSize);
 
     // Set default code page
     SetConsoleOutputCP(487);
@@ -118,4 +119,6 @@ void ConsoleSetup ()
     // Change font and font size
     setFont();
 
+    // Set Full screen (this not work)
+    system("mode 650");
 }

@@ -15,15 +15,13 @@
 #include <stdlib.h>
 #include <windows.h>
 #include <vector>
+#include <time.h>
 
 using namespace std;
 
 extern char version[];
 
-const int W = 30;   //Screen Width
-const int H = 20;   //Screen Height
-const int scrX = 3;    //Screen LeftTop X
-const int scrY = 2;    //Screen LeftTop Y
+
 
 // VARIABLES
 
@@ -156,7 +154,8 @@ void init()
 /*---------------BackEnd--------------------*/
 void infoBoard ()
 {
-    goToXY(scrX+W+5,scrY);
+    int space=3;
+    goToXY(scrX+W+space,scrY);
     cout << char(201) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205);
     if (score>=10) cout << char(205);     // I am sure that you can't have more than 100000 so no need to build a numCheck function :))
     if (score>=100) cout << char(205);
@@ -165,10 +164,10 @@ void infoBoard ()
     if (score>=100000) cout << char(205);
     cout << char(187);
 
-    goToXY(scrX+W+5,scrY+1);
+    goToXY(scrX+W+space,scrY+1);
     cout << char(186) << "Score: "<< score << char(186);
 
-    goToXY(scrX+W+5,scrY+2);
+    goToXY(scrX+W+space,scrY+2);
     cout << char(200) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205);
     if (score>=10) cout << char(205);
     if (score>=100) cout << char(205);
@@ -343,7 +342,7 @@ void foodSpawn()
 {
     do
     {
-        srand(foodX + foodY);
+        srand(foodX + foodY + time(NULL));
         foodX = rand() % W;
         foodY = rand() % H;
     }
