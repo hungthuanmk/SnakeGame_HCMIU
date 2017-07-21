@@ -44,6 +44,8 @@
 		<Unit filename="Maps.h" />
 		<Unit filename="Screens.cpp" />
 		<Unit filename="Screens.h" />
+		<Unit filename="Sound.cpp" />
+		<Unit filename="Sound.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />
