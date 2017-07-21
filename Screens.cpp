@@ -1,21 +1,21 @@
 #ifndef DECLARATION_H_INCLUDED
     #include "Declaration.h"
 #endif // DECLARATION_H_INCLUDED
-
 #ifndef GAMEPLAY_H_INCLUDED
     #include "GamePlay.h"
 #endif // GAMEPLAY_H_INCLUDED
-
 #ifndef CONSOLEAPI_H_INCLUDED
     #include "ConsoleAPI.h"
 #endif // CONSOLEAPI_H_INCLUDED
+#ifndef SOUND_H_INCLUDED
+    #include "Sound.h"
+#endif // SOUND_H_INCLUDED
 
 #include "Screens.h"
+
 #include <iostream>
 #include <conio.h>
-
 #include <windows.h>
-
 
 using namespace std;
 
@@ -23,8 +23,7 @@ extern bool gameOver;
 
 void mainMenu()
 {
-
-
+    playSound(SOUND_MENU, true);
     ConsoleSetup();
     makeSafeBorder();
     drawScreen();
@@ -78,18 +77,20 @@ void mainMenu()
     goToXY(scrX+space,scrY+(line++));
     cout << "                     QUIT GAME :(";
 
-
-
-
     //selectMenu();
-
+    getch();
+    playScreen(); //begin game
 }
 
 void playScreen ()
 {
+    stopSound(); //turn off music
+    system("cls"); //clear menu screen
     init();
     while (gameOver!=true)
         draw();
+    goToXY(0, scrY + H);
+    cout << " > GAME OVER\n";
 }
 
 void mapScreen()

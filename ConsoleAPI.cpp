@@ -9,9 +9,9 @@
 #include <cwchar>
 #include <windows.h>
 
-
 using namespace std;
 
+/*
 typedef struct _CONSOLE_FONT_INFOEX
 {
     ULONG cbSize;
@@ -21,6 +21,7 @@ typedef struct _CONSOLE_FONT_INFOEX
     UINT  FontWeight;
     WCHAR FaceName[LF_FACESIZE];
 }  CONSOLE_FONT_INFOEX, *PCONSOLE_FONT_INFOEX;
+*/
 
 #ifdef __cplusplus
 extern "C" {
@@ -73,8 +74,8 @@ void setFont()
     CONSOLE_FONT_INFOEX cfi;
     cfi.cbSize = sizeof(cfi);
     cfi.nFont = 0;
-    cfi.dwFontSize.X = 20;                   // Width of each character in the font
-    cfi.dwFontSize.Y = 20;                  // Height
+    cfi.dwFontSize.X = 15;                  // Width of each character in the font
+    cfi.dwFontSize.Y = 15;                  // Height
     cfi.FontFamily = FF_DONTCARE;
     cfi.FontWeight = FW_NORMAL;
     std::wcscpy(cfi.FaceName, L"Consolas"); // Choose your font
@@ -85,40 +86,21 @@ void ConsoleSetup ()
 {
     HANDLE wHnd = GetStdHandle(STD_OUTPUT_HANDLE);    // Write on console
     HANDLE rHnd = GetStdHandle(STD_INPUT_HANDLE);    // Read from console
-    CONSOLE_CURSOR_INFO cursorInfo;
-
-    // Change init color
-    SetTextColor(15);
-
+    HWND hDesktop = GetDesktopWindow();   // Get a handle to the desktop window
+    HWND hWnd = GetConsoleWindow();
+    RECT desktop;
+    // Get the size of screen to the variable desktop
+    GetWindowRect(hDesktop, &desktop);
+    // Resize screen
+    MoveWindow(hWnd, (desktop.right-1250)/2, (desktop.bottom-500)/2, 1250, 500,TRUE);
     // Remove Cursor
     ShowConsoleCursor(false);
-    /*GetConsoleCursorInfo(wHnd, &cursorInfo);
-    cursorInfo.bVisible = false;
-    SetConsoleCursorInfo(wHnd, &cursorInfo);*/
     // Change Title
-
     SetConsoleTitle(TEXT(ConsoleTitle));
-
-    SetConsoleOutputCP(437);
-
-    // Resize setup
-
-    // SMALL_RECT windowSize = {0, 0, 80, 50};
-
-    // Resize screen
-
-    // SetConsoleWindowInfo(wHnd, TRUE, &windowSize);
-
-    // Resize buffer
-    COORD bufferSize = {30, 20};
-    //SetConsoleScreenBufferSize(wHnd, bufferSize);
-
     // Set default code page
-    SetConsoleOutputCP(487);
-
+    SetConsoleOutputCP(437);
+    // Change init color
+    SetTextColor(15);
     // Change font and font size
     setFont();
-
-    // Set Full screen (this not work)
-    system("mode 650");
 }

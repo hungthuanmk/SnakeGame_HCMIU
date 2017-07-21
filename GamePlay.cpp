@@ -1,26 +1,25 @@
 #ifndef DECLARATION_H_INCLUDED
     #include "Declaration.h"
 #endif // DECLARATION_H_INCLUDED
-
 #ifndef CONSOLEAPI_H_INCLUDED
     #include "ConsoleAPI.h"
 #endif // CONSOLEAPI_H_INCLUDED
-
 #ifndef GAMEPLAY_H_INCLUDED
     #include "GamePlay.h"
 #endif // GAMEPLAY_H_INCLUDED
+#ifndef SOUND_H_INCLUDED
+    #include "Sound.h"
+#endif // SOUND_H_INCLUDED
 
 #include <iostream>
 #include <conio.h>
-#include <stdlib.h>
 #include <windows.h>
 #include <vector>
+#include <time.h>
 
 using namespace std;
 
 extern char version[];
-
-
 
 // VARIABLES
 
@@ -41,38 +40,38 @@ void makeDangerBorder()
     // Top
     for (int x = 0; x < W; x++)
     {
-        screen[0][x] = char(205);
+        screen[0][x] = char(SCREEN_TOP);
         zone[0][x] = 1;
     }
     // Left
     for (int y = 0; y < H; y++)
     {
-        screen[y][0] = char(186);
+        screen[y][0] = char(SCREEN_LEFT);
         zone[y][0] = 1;
     }
     // Bottom
     for (int x = 0; x < W; x++)
     {
-        screen[H][x] = char(205);
+        screen[H][x] = char(SCREEN_BOTTOM);
         zone[H][x] = 1;
     }
     // Right
     for (int y = 0; y < H; y++)
     {
-        screen[y][W] = char(186);
+        screen[y][W] = char(SCREEN_RIGHT);
         zone[y][W] = 1;
     }
     // TopLeft
-    screen[0][0] = char(201);
+    screen[0][0] = char(SCREEN_TOP_LEFT);
       zone[0][0] = 1;
     // TopRight
-    screen[0][W] = char(187);
+    screen[0][W] = char(SCREEN_TOP_RIGHT);
       zone[0][W] = 1;
     // BottomLeft
-    screen[H][0] = char(200);
+    screen[H][0] = char(SCREEN_BOT_LEFT);
       zone[H][0] = 1;
     // BottomRight
-    screen[H][W] = char(188);
+    screen[H][W] = char(SCREEN_BOT_RIGHT);
       zone[H][W] = 1;
 }
 
@@ -81,24 +80,32 @@ void makeSafeBorder()
 {
     // Top
     for (int x = 0; x < W; x++)
-        screen[0][x] = char(196);
+        screen[0][x] = char(SCREEN_TOP);
     // Left
     for (int y = 0; y < H; y++)
-        screen[y][0] = char(179);
+        screen[y][0] = char(SCREEN_LEFT);
     // Bottom
     for (int x = 0; x < W; x++)
-        screen[H][x] = char(196);
+        screen[H][x] = char(SCREEN_BOTTOM);
     // Right
     for (int y = 0; y < H; y++)
-        screen[y][W] = char(179);
+        screen[y][W] = char(SCREEN_RIGHT);
     // TopLeft
-    screen[0][0] = char(218);
+    screen[0][0] = char(SCREEN_TOP_LEFT);
     // TopRight
-    screen[0][W] = char(191);
+    screen[0][W] = char(SCREEN_TOP_RIGHT);
     // BottomLeft
-    screen[H][0] = char(192);
+    screen[H][0] = char(SCREEN_BOT_LEFT);
     // BottomRight
-    screen[H][W] = char(217);
+    screen[H][W] = char(SCREEN_BOT_RIGHT);
+}
+
+void makeBorder(bool safeBorder = TRUE)
+{
+    if (safeBorder)
+        makeSafeBorder();
+    else
+        makeDangerBorder();
 }
 
 void safeBorderLogic()
@@ -106,25 +113,25 @@ void safeBorderLogic()
     // Left side
     if (snakeX == W && zone[snakeY][snakeX] != 1)
     {
-        screen[snakeY][snakeX] = char(179);
+        screen[snakeY][snakeX] = char(SCREEN_LEFT);
         snakeX = 1;
     }
     // Right side
     if (snakeX == 0 && zone[snakeY][snakeX] != 1)
     {
-        screen[snakeY][snakeX]=char(179);
+        screen[snakeY][snakeX] = char(SCREEN_RIGHT);
         snakeX = W-1;
     }
     // Bot side
     if (snakeY == H && zone[snakeY][snakeX] != 1)
     {
-        screen[snakeY][snakeX] = char(196);
+        screen[snakeY][snakeX] = char(SCREEN_BOTTOM);
         snakeY = 1;
     }
     // Top side
     if (snakeY == 0 && zone[snakeY][snakeX] != 1)
     {
-        screen[snakeY][snakeX] = char(196);
+        screen[snakeY][snakeX] = char(SCREEN_TOP);
         snakeY = H-1;
     }
 }
@@ -137,9 +144,8 @@ void init()
 {
     ConsoleSetup();
 
-    //makeDangerBorder();
-    makeSafeBorder();
-    infoBoard();
+    makeBorder(true);
+    infoBoard(); //score board
 
    // tailX.insert(tailX.begin(),snakeX-2);
    // tailY.insert(tailY.begin(),snakeY);
@@ -180,28 +186,28 @@ void debug ()
 {
     int Yline=16;
 
-    goToXY(70,Yline);
+    goToXY(70, Yline);
     cout << "IU Snake ver " << version;
     //cout << "IU Snake ver 0.4b";
     Yline++;
 
-    goToXY(70,Yline);
+    goToXY(70, Yline);
     cout << "Score: " << score;
     Yline++;
 
-    goToXY(70,Yline);
+    goToXY(70, Yline);
     cout << "Num of tails: " << numTails;
     Yline++;
 
-    goToXY(70,Yline);
+    goToXY(70, Yline);
     cout << "foodX " << foodX << " foodY " << foodY ;
     Yline++;
 
-    goToXY(70,Yline);
+    goToXY(70, Yline);
     cout << "numTail " << numTails;
     Yline++;
 
-    goToXY(70,Yline);
+    goToXY(70, Yline);
     cout << "Time " << timer;
     Yline++;
 }
@@ -239,11 +245,9 @@ void drawScreen()
                 default:
                 cout << screen[i][j];
             }
-
         }
     }
 }
-
 
 void getKey()
 {
@@ -290,7 +294,6 @@ void getKey()
             gameStart = true;
             deleteSnake();
         }
-
     }
 
     if (
@@ -336,12 +339,13 @@ void deleteSnake()
 {
     screen[snakeY][snakeX] = ' ';
 }
-// Food Spawn (Fail)
+
+// Food Spawn
 void foodSpawn()
 {
     do
     {
-        srand(foodX + foodY);
+        srand(foodX + foodY + snakeX + snakeY + numTails + time(NULL)); //random seed
         foodX = rand() % W;
         foodY = rand() % H;
     }
@@ -349,8 +353,8 @@ void foodSpawn()
 
     screen[foodY][foodX] = char(foodIcon);
 }
-// Tail
 
+// Tail
 void saveTail ()
 {
     tailX.insert(tailX.begin(),snakeX);
@@ -358,8 +362,8 @@ void saveTail ()
     //deleteTail
     while (tailX.size()>numTails || tailY.size()>numTails)
     {
-        screen[tailY[tailY.size()-1]][tailX[tailX.size()-1]]=' ';
-        zone[tailY[tailY.size()-1]][tailX[tailX.size()-1]]=0;
+        screen[tailY[tailY.size()-1]][tailX[tailX.size()-1]] = ' ';
+        zone[tailY[tailY.size()-1]][tailX[tailX.size()-1]] = 0;
         tailX.pop_back();
         tailY.pop_back();
     }
@@ -370,23 +374,24 @@ void logic()
 {
     safeBorderLogic();
 
-    if (snakeX==foodX && snakeY==foodY)
+    if (snakeX == foodX && snakeY == foodY)
     {
-        score+=10;
+        score += 10;
         numTails++;
 
         foodSpawn();
     }
 
-    if (zone[snakeY][snakeX]==1)
-        gameOver=true;
+    if (zone[snakeY][snakeX] == 1)
+        gameOver = true;
 }
+
 // This draw
 void draw()
 {
     getKey();
 
-    if (gameStart)
+    if (gameStart) //gameStarted?
     {
 
         snakeMove();
@@ -403,10 +408,10 @@ void draw()
 
         timer += gameSpeed;
 
-        Sleep(gameSpeed);
-        infoBoard();
+        Sleep(gameSpeed); //delay
+        infoBoard(); //update scoreboard
         if (Debug)
-            debug();
+            debug(); //show DEBUG infos
     }
     else //Initial screen
     {

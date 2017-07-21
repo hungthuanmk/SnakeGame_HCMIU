@@ -1,31 +1,80 @@
 #ifndef GAMEPLAY_H_INCLUDED
 #define GAMEPLAY_H_INCLUDED
 
+/**
+    Make danger border.
+*/
 void makeDangerBorder();
-// Safezone Border
-void makeSafeBorder();
-void safeBorderLogic();
-// 0 = safe
-// 1 = dangerous
 
-// Setup process
+/**
+    Make danger border.
+*/
+void makeSafeBorder();
+
+/**
+    Safe border logical movement.
+*/
+void safeBorderLogic();
+
+/**
+    Init gameplay.
+    -> ConsoleSetup() see more "ConsoleAPI.h"
+*/
 void init();
 /*---------------BackEnd--------------------*/
+/**
+    Show score board.
+*/
 void infoBoard ();
+
+/**
+    Show debug screen.
+*/
 void debug();
+
+/**
+    Draw all character in array screen[][].
+*/
 void drawScreen();
-// getKey --> snakeMove
+
+/**
+    Get key input and change snake's direction.
+*/
 void getKey();
+
+/**
+    Move snake's head and tails.
+*/
 void snakeMove();
+
+/**
+    Print snakes icon into array screen[][] and set zone[][].
+*/
 void makeSnake();
+
+/**
+    Clear old snake's icon in screen[][].
+*/
 void deleteSnake();
-// Food Spawn (Fail)
+
+/**
+    Spawn new food.
+*/
 void foodSpawn();
-// Tail
+
+/**
+    Create snake's tail in screen[][] and zone[][].
+*/
 void saveTail();
-// Game Logical
+
+/**
+    Gameplay logical ex: hit tail, hit border...
+*/
 void logic();
-// This draw
+
+/**
+    Run all need steps in each of game frames.
+*/
 void draw();
 
 #endif // GAMEPLAY_H_INCLUDED

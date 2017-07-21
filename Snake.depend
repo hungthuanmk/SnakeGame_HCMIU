@@ -19,46 +19,48 @@
 	<vector>
 	<tchar.h>
 
-1499843660 source:d:\project\snakegame_hcmiu\consoleapi.cpp
+1500608956 source:d:\project\snakegame_hcmiu\consoleapi.cpp
 	"ConsoleAPI.h"
 	"Declaration.h"
+	<cwchar>
 	<windows.h>
 
-1499843660 d:\project\snakegame_hcmiu\consoleapi.h
+1500610122 d:\project\snakegame_hcmiu\consoleapi.h
 
-1499878788 source:d:\project\snakegame_hcmiu\main.cpp
-	<iostream>
+1500606895 source:d:\project\snakegame_hcmiu\main.cpp
 	<conio.h>
 	"Screens.h"
 
-1499878787 d:\project\snakegame_hcmiu\screens.h
+1500610257 d:\project\snakegame_hcmiu\screens.h
 
 1499782779 d:\project\snakegame_hcmiu\constants.h
 
-1499879794 source:d:\project\snakegame_hcmiu\screens.cpp
+1500609396 source:d:\project\snakegame_hcmiu\screens.cpp
 	"Declaration.h"
 	"GamePlay.h"
 	"ConsoleAPI.h"
+	"Sound.h"
 	"Screens.h"
 	<iostream>
 	<conio.h>
+	<windows.h>
 
-1499879199 d:\project\snakegame_hcmiu\declaration.h
-	<string>
+1500608061 d:\project\snakegame_hcmiu\declaration.h
 
 1499788504 d:\project\snakegame_hcmiu\variables.h
 
-1499878787 source:d:\project\snakegame_hcmiu\gameplay.cpp
+1500608773 source:d:\project\snakegame_hcmiu\gameplay.cpp
 	"Declaration.h"
 	"ConsoleAPI.h"
 	"GamePlay.h"
+	"Sound.h"
 	<iostream>
 	<conio.h>
-	<stdlib.h>
 	<windows.h>
 	<vector>
+	<time.h>
 
-1499843660 d:\project\snakegame_hcmiu\gameplay.h
+1500610750 d:\project\snakegame_hcmiu\gameplay.h
 
 1499791553 source:d:\project\snakegame_hcmiu\declaration.cpp
 	"Declaration.h"
@@ -104,4 +106,17 @@
 	"Declaration.h"
 	<cwchar>
 	<windows.h>
+
+1500182227 source:d:\project\snakegame_hcmiu\maps.cpp
+	"ConsoleAPI.h"
+	"Maps.h"
+	<fstream>
+
+1500182124 d:\project\snakegame_hcmiu\maps.h
+
+1500606450 source:d:\project\snakegame_hcmiu\sound.cpp
+	<windows.h>
+	"Sound.h"
+
+1500609810 d:\project\snakegame_hcmiu\sound.h
 
